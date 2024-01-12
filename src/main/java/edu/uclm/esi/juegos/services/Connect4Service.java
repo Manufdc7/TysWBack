@@ -3,6 +3,9 @@ package edu.uclm.esi.juegos.services;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
+import com.google.common.hash.Hashing;
+
+
 @Service
 public class Connect4Service {
 

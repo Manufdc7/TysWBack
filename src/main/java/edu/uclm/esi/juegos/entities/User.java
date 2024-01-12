@@ -2,36 +2,31 @@ package edu.uclm.esi.juegos.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.annotation.Nonnull;
+
+import com.google.common.hash.Hashing;
+import java.nio.charset.StandardCharsets;
+
 
 @Entity
 public class User {
 	
 	
 	@Id
-	private Integer ID; //pk on db
-	private Integer num_wins;
-	private Integer num_loses;
+	private String ID; //pk on db
+	@Nonnull
 	private String email;
+	@Nonnull
 	private String user_name;
+	@Nonnull
+	private String pwd;
 	
 	
-	public Integer getID() {
+	public String getID() {
 		return ID;
 	}
-	public void setID(Integer iD) {
+	public void setID(String iD) {
 		ID = iD;
-	}
-	public Integer getNum_wins() {
-		return num_wins;
-	}
-	public void setNum_wins(Integer num_wins) {
-		this.num_wins = num_wins;
-	}
-	public Integer getNum_loses() {
-		return num_loses;
-	}
-	public void setNum_loses(Integer num_loses) {
-		this.num_loses = num_loses;
 	}
 	public String getEmail() {
 		return email;
@@ -45,6 +40,16 @@ public class User {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = Hashing.sha256()
+                .hashString(pwd, StandardCharsets.UTF_8)
+                .toString();;
+	}
+	
+	
 	
 	
 	
