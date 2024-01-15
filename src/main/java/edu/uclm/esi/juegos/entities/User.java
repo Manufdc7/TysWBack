@@ -1,5 +1,6 @@
 package edu.uclm.esi.juegos.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.annotation.Nonnull;
@@ -16,7 +17,7 @@ public class User {
 	private String ID; //pk on db
 	@Nonnull
 	private String email;
-	@Nonnull
+	@Column(unique = true, nullable = false)
 	private String user_name;
 	@Nonnull
 	private String pwd;
